@@ -142,5 +142,9 @@
 | `timezoneName`     | String   | The name of the user's timezone (e.g., "+09:00 GMT-9").               |
 | `languageName`     | String   | The name of the user's language (e.g., "English").                    |
 
+#### **Set Push Notification Rule**
+
+
+
 
 
