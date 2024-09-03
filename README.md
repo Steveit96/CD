@@ -220,6 +220,7 @@
 | `oidx` | String | The value of this should be "updatedDt:desc" when sort by time and "Urgency:desc" when sort by urgency. |
 | `assignYn` | String | If filter by assignee then it should be Y otherwise the filed should not present in the query params|
 | `assignUserNo ` |  String | If filter by My incident then should pass the user id here, otherwise the fileld should not present in the query params |
+| `searchWord` | String | Keyword to search for the incident, only for search otherwise the field should not present in the query params  |
 
 ## **Incident Detail**
 
