@@ -18,7 +18,7 @@
 
 ## **Endpoints**
 
-### **Domain**
+## **Domain**
 
 | **Method** | **URL**                                   | **Headers**                                                                                                                                               |
 |------------|-------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -32,7 +32,7 @@
 | `data.svcUrl`       | String   | The service URL for the API.                                                                                                                             |
 | `data.keycloakJson` | String   | JSON object as a string containing Keycloak configuration settings.                                                                                      |
 
-### **MFA Availability Check**
+## **MFA Availability Check**
 
 | **Method** | **URL**                                                                                                               | **Headers**                          |
 |------------|-----------------------------------------------------------------------------------------------------------------------|--------------------------------------|
@@ -44,7 +44,7 @@
 
 ------------
 
-### **Login**
+## **Login**
 
 | **Method** | **URL**                                                                                                   | **Headers**                                        | **Body Parameters**                                                                                                             |
 |------------|-----------------------------------------------------------------------------------------------------------|---------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
@@ -61,7 +61,7 @@
 | `session_state`           | String     | The session identifier for the current authentication session.                                                                      |
 | `scope`                   | String     | The scope of the token, indicating the permissions associated with it.                                                              |
 
-### **Session**
+## **Session**
 
 | **Method** | **URL**                                                                                                | **Headers**                                                                                                                                 |
 |------------|--------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
@@ -76,7 +76,7 @@
 | `userName`         | String    | The name of the user.                            |
 | `email`            | String    | The email address of the user.                   |
 
-### **Company Info**
+## **Company Info**
 
 ###### **Samsung Domain**
 
@@ -97,7 +97,7 @@
 | `companyId`        | String   | Unique identifier for the company |
 | `companyName`      | String   | Name of the company              |
 
-### **Upload Device Info**
+## **Upload Device Info**
 
 ###### **Samsung Domain**
 
@@ -111,7 +111,7 @@
 |------------|--------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|---------------------------|
 | **POST**   | `{baseUrl}/api/v1/<company_portal_id>/authInfo`                                                        | `mobile-domain: opsnow.com`<br>`Content-Type: application/json`<br>`Authorization: Bearer <access_token>`                                                  | ```json { "deviceId": <device_id>, "userNo": <user_no>, "uuid": <uuid> } ```                                               | `200 OK` with no response body |
 
-### **Register Device Token**
+## **Register Device Token**
 
 ###### **Samsung Domain**
 
@@ -125,7 +125,7 @@
 |------------|-------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|---------------------------|
 | **POST**   | `{baseUrl}/api/v1/<company_portal_id>/device`                                                         | `mobile-authorization: <mobile_token>`<br>`mobile-domain: <domain_name>`<br>`Content-Type: application/json`<br>`Authorization: Bearer <access_token>` | ```json { "deviceId": <device_id>, "pushServiceType": "FCM", "device_token": <device_token>, "brandName": <device_brand_name>, "pushUseYn": "Y", "modelName": <device_model> } ``` | `200 OK` with no response body |
 
-#### **Profile Details**
+## **Profile Details**
 
 | **Method** | **URL**                                                                                           | **Headers**                                                                                                                                                                                                                                                                                                     |
 |------------|---------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -142,7 +142,7 @@
 | `timezoneName`     | String   | The name of the user's timezone (e.g., "+09:00 GMT-9").               |
 | `languageName`     | String   | The name of the user's language (e.g., "English").                    |
 
-#### **Set Push Notification Rule**
+## **Set Push Notification Rule**
 
 | **Method** | **URL**                                                                                     | **Headers**                                                                                                                                                                                                                                                                                                     |
 |------------|---------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -162,7 +162,7 @@
 | 200 OK                 | None     | The request was successful, with no response body.                           |
 
 
-#### **Get Push Notification Rule**
+## **Get Push Notification Rule**
 
 | **Method** | **URL**                                                                                                   | **Headers**                                                                                                                                                                                                                                                                                                     |
 |------------|-----------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -185,15 +185,13 @@
 | `useYN`                | String   | Indicates if the rule is enabled (`Y` for Yes, `N` for No).           |
 | `eventStatusCd`        | String   | The status code of the event (Only available for the "CLOSE" and "ACKNOWLEDGE").         |
 
-#### **Incident List**
-
-## API Request
+## **Incident List**
 
 | **Method** | **URL**                                                                                                   | **Headers**                                                                                                                                                                                                                                                                                                     |
 |------------|-----------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **GET**    | `{baseUrl}/api/v2/<company_portal_id>/incident?rows=1&page=1&oidx=updatedDt:desc` | `Content-Type: application/json`<br>`mobile-domain: <domain_name>`<br>`mobile-authorization: <mobile_token>`<br>`Authorization: Bearer <access_token>` |
 
-## Response Fields
+#### Response Fields
 
 | **Field Name**      | **Type** | **Description**                                    |
 |---------------------|----------|----------------------------------------------------|
@@ -211,13 +209,20 @@
 | `serviceNo`         | Integer  | The unique identifier for the service.             |
 | `serviceName`       | String   | The name of the service.                           |
 
-### Additional Information
+#### Additional Information
 
 | **Query Params** | **Type** | **Description**                          |
 |----------------|----------|------------------------------------------|
 | `total`        | Integer  | The total number of incidents.           |
 | `page`         | Integer  | The current page number.                 |
 | `rows`         | Integer  | The number of incidents per page.        |
+| `status`         | String  | To fetch "OPEN" and "ACKNOWLEDGE " incidents. It should not be sent if it's required to fetch all incidents       |
+| `oidx` | String | The value of this should be "updatedDt:desc" when sort by time and "Urgency:desc" when sort by urgency. |
+| `assignYn` | String | If filter by assignee then it should be Y otherwise the filed should not present in the query params|
+| `assignUserNo ` |  String | If filter by My incident then should pass the user id here, otherwise the fileld should not present in the query params |
+
+
+
 
 
 
