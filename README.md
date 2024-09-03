@@ -221,6 +221,51 @@
 | `assignYn` | String | If filter by assignee then it should be Y otherwise the filed should not present in the query params|
 | `assignUserNo ` |  String | If filter by My incident then should pass the user id here, otherwise the fileld should not present in the query params |
 
+## **Incident Detail**
+
+| **Method** | **URL**                                                                                                   | **Headers**                                                                                                                                                                                                                                                                                                     |
+|------------|-----------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **GET**    | `{baseUrl}/api/v2/<company_portal_id>/incident/<incident_no>`    | `Content-Type: application/json`<br>`mobile-domain: <domain_name>`<br>`mobile-authorization: <mobile_token>`<br>`Authorization: Bearer <access_token>`|
+
+### Response Fields
+
+| **Field Name**      | **Type** | **Description**                                    |
+|---------------------|----------|----------------------------------------------------|
+| `incidentNo`        | Integer  | The unique identifier for the incident.            |
+| `cIncidentNo`       | Integer  | The customer-specific incident number.             |
+| `incidentName`      | String   | The name or title of the incident.                 |
+| `statusCd`          | String   | The code representing the current status.          |
+| `statusName`        | String   | The name of the current status.                    |
+| `urgencyCd`         | String   | The code representing the urgency level.           |
+| `urgencyName`       | String   | The name of the urgency level.                     |
+| `createdDt`         | String   | The date and time when the incident was created.   |
+| `updatedDt`         | String   | The date and time when the incident was last updated. |
+| `currentTime`       | String   | The current date and time.                         |
+| `userNo`            | Integer  | The unique identifier of the user.                 |
+| `userName`          | String   | The name of the user.                              |
+| `userUseYn`         | String   | Indicates if the user is active (`Y` for Yes, `N` for No). |
+| `serviceNo`         | Integer  | The unique identifier for the service.             |
+| `serviceName`       | String   | The name of the service.                           |
+| `escalationNo`      | Integer  | The unique identifier for the escalation.          |
+| `escalationName`    | String   | The name of the escalation.                        |
+
+
+## **Incident Comment**
+
+
+| **Method** | **URL**                                                                                                   | **Headers**                                                                                                                                                                                                                                                                                                     |
+|------------|-----------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **GET**    | `{baseUrl}/api/v2/<company_portal_id>/incident/<incident_no>/history?type=cmmt` | `Content-Type: application/json`<br>`mobile-domain: <domain_name>`<br>`mobile-authorization: <mobile_token>`<br>`Authorization: Bearer <access_token>` |
+
+#### Response Fields
+
+| **Field Name** | **Type** | **Description**                      |
+|----------------|----------|--------------------------------------|
+| `historyNo`    | Integer  | The unique identifier for the history entry. |
+| `eventTypeCd`  | String   | The code representing the type of incident.       |
+| `textSbst`     | String   | The comment of the incident.            |
+| `eventTime`    | String   | The date and time when the event occurred.    |
+| `register`     | String   | The name of the person who registered the comment. |
 
 
 
