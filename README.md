@@ -78,13 +78,13 @@
 
 ### **Company Info**
 
-#### Samsung Domain
+###### **Samsung Domain**
 
 | **Method** | **URL**                                                                                               | **Headers**                                                                                                                                             |
 |------------|-------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **GET**    | `{baseUrl}/samsung/company`                                                                           | `Content-Type: application/json`<br>`Authorization: Bearer <access_token>`                                       |
 
-#### Global Domain
+###### **Global Domain**
 
 | **Method** | **URL**                                                                                               | **Headers**                                                                                                                                             |
 |------------|-------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -99,13 +99,13 @@
 
 ### **Upload Device Info**
 
-#### Samsung Domain
+###### **Samsung Domain**
 
 | **Method** | **URL**                                                                                                | **Headers**                                                                                                                                               | **Request Body**                                                                                                            | **Expected Response**     |
 |------------|--------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|---------------------------|
 | **POST**   | `{baseUrl}/samsung/authInfo`                                                                           | `mobile-domain: opsnow.com`<br>`Content-Type: application/json`<br>`Authorization: Bearer <access_token>`                                                  | ```json { "deviceId": <device_id>, "userNo": <user_no>, "uuid": <uuid> } ```                                               | `200 OK` with no response body |
 
-#### Global Domain
+###### **Global Domain**
 
 | **Method** | **URL**                                                                                                | **Headers**                                                                                                                                               | **Request Body**                                                                                                            | **Expected Response**     |
 |------------|--------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|---------------------------|
@@ -143,6 +143,26 @@
 | `languageName`     | String   | The name of the user's language (e.g., "English").                    |
 
 #### **Set Push Notification Rule**
+
+| **Method** | **URL**                                                                                     | **Headers**                                                                                                                                                                                                                                                                                                     |
+|------------|---------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **POST**   | `{baseUrl}/api/v2/<company_portal_id>>/pushRule` | `Content-Type: application/json`<br>`mobile-domain: <domain_name>`<br>`mobile-authorization:<mobile_token>`<br>`Authorization: Bearer <access_token>` |
+
+| **Request Body Field** | **Type** | **Description**                                                              |
+|------------------------|----------|------------------------------------------------------------------------------|
+| `deviceId`             | String   | The unique identifier of the device.                                         |
+| `device_token`         | String   | The FCM token for push notifications.                                        |
+| `pushUseYn`            | String   | Indicates if push notifications are enabled (`Y` for Yes, `N` for No).       |
+| `pushType`             | String   | The type of push notification (e.g., "PUSH").                                |
+| `pushServiceType`      | String   | The service type used for push notifications (e.g., "FCM").                  |
+| `voip_token`           | String   | The VoIP token, if applicable (can be an empty string if not used).          |
+
+| **Response**           | **Type** | **Description**                                                              |
+|------------------------|----------|------------------------------------------------------------------------------|
+| 200 OK                 | None     | The request was successful, with no response body.                           |
+
+
+
 
 
 
