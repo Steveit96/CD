@@ -267,6 +267,25 @@
 | `eventTime`    | String   | The date and time when the event occurred.    |
 | `register`     | String   | The name of the person who registered the comment. |
 
+## **Related Incident**
+
+## API Request
+
+| **Method** | **URL**                                                                                                   | **Headers**                                                                                                                                                                                                                                                                                                     |
+|------------|-----------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **GET**    | `{baseUrl}/api/v2/<company_portal_id>/incident/<incident_no>/relatedIncident` | `Content-Type: application/json`<br>`mobile-domain: <domain_name>`<br>`mobile-authorization: <mobile_token>`<br>`Authorization: Bearer <access_token>` |
+
+## Response Fields
+
+| **Field Name** | **Type** | **Description**                     |
+|----------------|----------|-------------------------------------|
+| `incidentNo`   | Integer  | The unique identifier for the incident. |
+| `cIncidentNo`  | Integer  | The related incident number.        |
+| `incidentName` | String   | The name of the related incident.   |
+| `userNo`       | Integer  | The user number (if applicable).    |
+| `userName`     | String   | The user name (if applicable).      |
+
+
 
 
 
