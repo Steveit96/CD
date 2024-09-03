@@ -162,6 +162,63 @@
 | 200 OK                 | None     | The request was successful, with no response body.                           |
 
 
+#### **Get Push Notification Rule**
+
+| **Method** | **URL**                                                                                                   | **Headers**                                                                                                                                                                                                                                                                                                     |
+|------------|-----------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **GET**    | `{baseUrl}/api/v2/1/user/<user_id>/pushRule/<device_id>`                    | `Content-Type: application/json`<br>`mobile-domain: opsnow.com`<br>`mobile-authorization: <mobile_token>`<br>`Authorization: Bearer <access_token>`|
+
+| **Response Field**     | **Type** | **Description**                                                      |
+|------------------------|----------|----------------------------------------------------------------------|
+| `userCntcMethNo`       | Integer  | The user's contact method number.                                    |
+| `device_token`         | String   | The FCM token for push notifications.                                |
+| `voip_token`           | String   | The VoIP token, if applicable (can be an empty string if not used).  |
+| `pushUseYn`            | String   | Indicates if push notifications are enabled (`Y` for Yes, `N` for No).|
+| `pushServiceType`      | String   | The service type used for push notifications (e.g., "FCM").          |
+| `pushType`             | String   | The type of push notification (e.g., "PUSH", "WAKE").                        |
+| `pushRule`             | Array    | An array of push notification rules.                                 |
+
+| **Push Rule Field**    | **Type** | **Description**                                                      |
+|------------------------|----------|----------------------------------------------------------------------|
+| `eventTypeCode`        | String   | The code representing the event type.                                |
+| `eventTypeName`        | String   | The name of the event type (e.g., "When incident is assigned to me").|
+| `useYN`                | String   | Indicates if the rule is enabled (`Y` for Yes, `N` for No).           |
+| `eventStatusCd`        | String   | The status code of the event (Only available for the "CLOSE" and "ACKNOWLEDGE").         |
+
+#### **Incident List**
+
+## API Request
+
+| **Method** | **URL**                                                                                                   | **Headers**                                                                                                                                                                                                                                                                                                     |
+|------------|-----------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **GET**    | `{baseUrl}/api/v2/<company_portal_id>/incident?rows=1&page=1&oidx=updatedDt:desc` | `Content-Type: application/json`<br>`mobile-domain: <domain_name>`<br>`mobile-authorization: <mobile_token>`<br>`Authorization: Bearer <access_token>` |
+
+## Response Fields
+
+| **Field Name**      | **Type** | **Description**                                    |
+|---------------------|----------|----------------------------------------------------|
+| `incidentNo`        | Integer  | The unique identifier for the incident.            |
+| `cIncidentNo`       | Integer  | The customer-specific incident number.             |
+| `incidentName`      | String   | The name or title of the incident.                 |
+| `statusCd`          | String   | The code representing the current status.          |
+| `statusName`        | String   | The name of the current status.                    |
+| `urgencyCd`         | String   | The code representing the urgency level.           |
+| `urgencyName`       | String   | The name of the urgency level.                     |
+| `createdDt`         | String   | The date and time when the incident was created.   |
+| `updatedDt`         | String   | The date and time when the incident was last updated. |
+| `userNo`            | Integer  | The unique identifier of the user (nullable).      |
+| `userName`          | String   | The name of the user (nullable).                   |
+| `serviceNo`         | Integer  | The unique identifier for the service.             |
+| `serviceName`       | String   | The name of the service.                           |
+
+### Additional Information
+
+| **Query Params** | **Type** | **Description**                          |
+|----------------|----------|------------------------------------------|
+| `total`        | Integer  | The total number of incidents.           |
+| `page`         | Integer  | The current page number.                 |
+| `rows`         | Integer  | The number of incidents per page.        |
+
 
 
 
