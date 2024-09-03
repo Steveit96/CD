@@ -270,8 +270,6 @@
 
 ## **Related Incident**
 
-## API Request
-
 | **Method** | **URL**                                                                                                   | **Headers**                                                                                                                                                                                                                                                                                                     |
 |------------|-----------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **GET**    | `{baseUrl}/api/v2/<company_portal_id>/incident/<incident_no>/relatedIncident` | `Content-Type: application/json`<br>`mobile-domain: <domain_name>`<br>`mobile-authorization: <mobile_token>`<br>`Authorization: Bearer <access_token>` |
@@ -318,13 +316,13 @@
 | `userNo`       | Integer  | The user number (if applicable).    |
 | `userName`     | String   | The user name (if applicable).      |
 
-## **Bulk Edit Incident - CLOSE**
+## **Incident Status Update - CLOSE**
 
 | Method | URL                                                                                       | Headers                                                                                                                                                                                                                  | Data                                                                                                           |
 |--------|-------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------|
 | **PUT**    | `{baseUrl}/api/v2/<company_portal_id>/incident` |`mobile-domain: <domain_name>`<br>`mobile-authorization: <mobile_token>`<br>`Content-Type: application/json`<br>`Authorization: Bearer <token>` | `[ { "incidentNo": <incident_no_1>, "userNo": <user_no>, "statusName": "CLOSE" }, { "incidentNo":  <incident_no_2>, "userNo": <user_no>, "statusName": "CLOSE" } ]` |
 
-## Response Fields
+#### Response Fields
 
 | **Field Name** | **Type** | **Description**                              |
 |----------------|----------|----------------------------------------------|
@@ -335,13 +333,13 @@
 | `userName`     | String   | The user name (if applicable).              |
 
 
-## **Bulk Edit Incident - ACKNOWLEDGE**
+## **Incident Status Update - ACKNOWLEDGE**
 
 | Method | URL                                                                                       | Headers                                                                                                                                                                                                                  | Data                                                                                                           |
 |--------|-------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------|
 | **PUT**    | `{baseUrl}/api/v2/<company_portal_id>/incident` |`mobile-domain: <domain_name>`<br>`mobile-authorization: <mobile_token>`<br>`Content-Type: application/json`<br>`Authorization: Bearer <token>` | `[ { "incidentNo": <incident_no_1>, "userNo": <user_no>, "statusName": "ACKNOWLEDGE" }, { "incidentNo":  <incident_no_2>, "userNo": <user_no>, "statusName": "ACKNOWLEDGE" } ]` |
 
-## Response Fields
+#### Response Fields
 
 | **Field Name** | **Type** | **Description**                              |
 |----------------|----------|----------------------------------------------|
@@ -351,11 +349,55 @@
 | `userNo`       | Integer  | The user number (if applicable).            |
 | `userName`     | String   | The user name (if applicable).              |
 
+## **Add Comment**
 
+| Method | URL                                                                                                 | Headers                                                                                                                                                                                                                                                                                                                                                                             | Data                  |
+|--------|-----------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------|
+| **PUT**    | `{baseUrl}/api/v2/<company_portal_id>/incident/<incident_no>/comment` | `Accept: application/json`<br>`mobile-domain: <domain_name>`<br>`mobile-authorization: <mobile_token>`<br>`Content-Type: application/json`<br>`Authorization: Bearer <access_token>` | `{"textSbst": <user_added_comment>}` |
 
+#### Response Fields
 
+| **Field Name** | **Type** | **Description**                   |
+|----------------|----------|-----------------------------------|
+| `textSbst`     | String   | The comment text submitted in the request. |
 
+## **Search User**
 
+| Method | URL                                                                                                 | Headers                                                                                                                                                                                                                                                                                                                                                                             | Data                  |
+|--------|-----------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------|
+| **GET**    | `{baseUrl}/api/v2/<company_portal_id>/common/member?searchWord=<seach_key_word>` | `mobile-domain: <domain_name>`<br>`mobile-authorization: <mobile_token>`<br>`Content-Type: application/json`<br>`Authorization: Bearer <access_token>` | `{"searchWord": <search_user_name>}` |
+
+#### Response Fields
+
+| **Field Name** | **Type** | **Description**                          |
+|----------------|----------|------------------------------------------|
+| `userNo`       | Integer  | The unique identifier for the user.     |
+| `portalUserId` | String   | The user ID in the portal.              |
+| `userName`     | String   | The name of the user.                  |
+| `email`        | String   | The email address of the user.          |
+| `statCd`       | String   | The status code associated with the user. |
+
+## **Add Assignee**
+
+| **Method** | **URL**                                                                                               | **Headers**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | **Data**                                                                                                                                                           |
+|------------|-------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **PUT**    | `{baseUrl}/api/v2/<company_portal_id>/incident`  | `mobile-domain: <domain_name>`<br>`mobile-authorization: <mobile_token>`<br>`Content-Type: application/json`<br>`Authorization: Bearer access_token` | `[{ "incidentNo": <incident_no>, "userNo": <user_no>, "statusName": <status_of_incident> }]` |
+
+#### Response Fields
+
+| **Field Name** | **Type** | **Description**                                   |
+|----------------|----------|---------------------------------------------------|
+| `incidentNo`   | Integer  | The unique identifier for the incident.           |
+| `statusName`   | String   | The status of the incident (e.g., "ACKNOWLEDGE").  |
+| `statNo`       | Integer  | The status code associated with the incident.     |
+| `userNo`       | Integer  | The unique identifier for the user.               |
+| `userName`     | String   | The name of the user (may be null).               |
+
+#### **Logout**
+
+| **Method** | **URL**                                                                                               | **Headers**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+|------------|-------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **DELETE**    | `{baseUrl}/api/v2/<company_portal_id>/authInfo/<device_token>`  | `mobile-domain: <domain_name>`<br>`mobile-authorization: <mobile_token>`<br>`Content-Type: application/json` |
 
 
 
