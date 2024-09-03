@@ -318,6 +318,39 @@
 | `userNo`       | Integer  | The user number (if applicable).    |
 | `userName`     | String   | The user name (if applicable).      |
 
+## **Bulk Edit Incident - CLOSE**
+
+| Method | URL                                                                                       | Headers                                                                                                                                                                                                                  | Data                                                                                                           |
+|--------|-------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------|
+| **PUT**    | `{baseUrl}/api/v2/<company_portal_id>/incident` |`mobile-domain: <domain_name>`<br>`mobile-authorization: <mobile_token>`<br>`Content-Type: application/json`<br>`Authorization: Bearer <token>` | `[ { "incidentNo": <incident_no_1>, "userNo": <user_no>, "statusName": "CLOSE" }, { "incidentNo":  <incident_no_2>, "userNo": <user_no>, "statusName": "CLOSE" } ]` |
+
+## Response Fields
+
+| **Field Name** | **Type** | **Description**                              |
+|----------------|----------|----------------------------------------------|
+| `incidentNo`   | Integer  | The unique identifier for the incident.     |
+| `statusName`   | String   | The status of the incident.                 |
+| `statNo`       | Integer  | The status number associated with the incident. |
+| `userNo`       | Integer  | The user number (if applicable).            |
+| `userName`     | String   | The user name (if applicable).              |
+
+
+## **Bulk Edit Incident - ACKNOWLEDGE**
+
+| Method | URL                                                                                       | Headers                                                                                                                                                                                                                  | Data                                                                                                           |
+|--------|-------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------|
+| **PUT**    | `{baseUrl}/api/v2/<company_portal_id>/incident` |`mobile-domain: <domain_name>`<br>`mobile-authorization: <mobile_token>`<br>`Content-Type: application/json`<br>`Authorization: Bearer <token>` | `[ { "incidentNo": <incident_no_1>, "userNo": <user_no>, "statusName": "ACKNOWLEDGE" }, { "incidentNo":  <incident_no_2>, "userNo": <user_no>, "statusName": "ACKNOWLEDGE" } ]` |
+
+## Response Fields
+
+| **Field Name** | **Type** | **Description**                              |
+|----------------|----------|----------------------------------------------|
+| `incidentNo`   | Integer  | The unique identifier for the incident.     |
+| `statusName`   | String   | The status of the incident.                 |
+| `statNo`       | Integer  | The status number associated with the incident. |
+| `userNo`       | Integer  | The user number (if applicable).            |
+| `userName`     | String   | The user name (if applicable).              |
+
 
 
 
